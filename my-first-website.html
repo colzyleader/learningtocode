@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!-- THIS IS YOUR FIRST WEBSITE! -->
+<!-- Lines that start with <!-- are "comments" - they don't do anything, -->
+<!-- they're just notes to help you understand the code -->
+
+<html>
+<head>
+    <!-- The <head> section is for settings - stuff the user doesn't see directly -->
+
+    <title>My First Website</title>
+    <!-- ^^^ This is what shows up in the browser tab -->
+
+    <style>
+        /* ============================================ */
+        /* THIS IS THE CSS SECTION - it controls how    */
+        /* everything LOOKS (colors, sizes, spacing)    */
+        /* ============================================ */
+
+        /* "body" means the whole page */
+        body {
+            background-color: #1a1a2e;    /* dark blue background */
+            color: #ffffff;                /* white text */
+            font-family: Arial, sans-serif; /* the font style */
+            margin: 0;                     /* no gap around edges */
+            padding: 20px;                 /* space inside the page */
+        }
+
+        /* This styles the big title at the top */
+        h1 {
+            color: #e94560;        /* pinkish-red color */
+            font-size: 48px;       /* how big the text is */
+            text-align: center;    /* centered on the page */
+        }
+
+        /* This styles the smaller subtitle */
+        h2 {
+            color: #0f3460;
+            background-color: #e94560;
+            padding: 10px;           /* space inside the box */
+            border-radius: 8px;      /* rounded corners */
+            display: inline-block;   /* makes the background wrap tight */
+        }
+
+        /* This styles regular text paragraphs */
+        p {
+            font-size: 18px;        /* text size */
+            line-height: 1.6;       /* space between lines */
+            max-width: 600px;        /* don't stretch too wide */
+            margin: 10px auto;       /* center it */
+        }
+
+        /* This styles the button */
+        .my-button {
+            background-color: #e94560;
+            color: white;
+            border: none;              /* no border line */
+            padding: 15px 30px;        /* space inside button */
+            font-size: 20px;
+            border-radius: 8px;        /* rounded corners */
+            cursor: pointer;           /* hand icon when hovering */
+            display: block;            /* puts it on its own line */
+            margin: 30px auto;         /* centers it */
+        }
+
+        /* This is what happens when you HOVER over the button */
+        .my-button:hover {
+            background-color: #c73651;   /* slightly darker */
+            transform: scale(1.05);      /* gets a tiny bit bigger */
+        }
+
+        /* Style for the box that appears when you click */
+        .message-box {
+            background-color: #16213e;
+            border: 2px solid #e94560;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 20px;
+            display: none;    /* HIDDEN by default - JavaScript shows it */
+        }
+
+        /* Styles for the color-changing section */
+        .color-buttons {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .color-btn {
+            width: 50px;
+            height: 50px;
+            border: 3px solid white;
+            border-radius: 50%;       /* makes it a circle */
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        /* A section with a fun border */
+        .fun-box {
+            border: 3px dashed #e94560;
+            padding: 20px;
+            max-width: 500px;
+            margin: 30px auto;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* Style for the counter number */
+        #count {
+            font-size: 60px;
+            color: #e94560;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================ -->
+    <!-- THIS IS THE HTML SECTION - it controls what  -->
+    <!-- actually APPEARS on the page                 -->
+    <!-- ============================================ -->
+
+    <!-- A big heading -->
+    <h1>🚀 My First Website</h1>
+
+    <!-- A paragraph of text -->
+    <p style="text-align: center;">
+        You made this! This is real HTML, CSS, and JavaScript.
+        Try changing the text, colors, and code below to see what happens.
+    </p>
+
+    <!-- ====== EXPERIMENT 1: A button that does something ====== -->
+    <h2>Experiment 1: Click the Button</h2>
+    <button class="my-button" onclick="showMessage()">
+        Click Me!
+    </button>
+    <!-- ^^^ onclick="showMessage()" means: when clicked, run the showMessage function -->
+
+    <div class="message-box" id="secretMessage">
+        🎉 You did it! You just triggered JavaScript!
+    </div>
+
+    <!-- ====== EXPERIMENT 2: Change the background color ====== -->
+    <h2>Experiment 2: Change the Background</h2>
+    <p style="text-align: center;">Click a circle to change the page color:</p>
+    <div class="color-buttons">
+        <button class="color-btn" style="background-color: #1a1a2e;" onclick="changeBackground('#1a1a2e')"></button>
+        <button class="color-btn" style="background-color: #2d4059;" onclick="changeBackground('#2d4059')"></button>
+        <button class="color-btn" style="background-color: #1b262c;" onclick="changeBackground('#1b262c')"></button>
+        <button class="color-btn" style="background-color: #461220;" onclick="changeBackground('#461220')"></button>
+    </div>
+
+    <!-- ====== EXPERIMENT 3: A counter ====== -->
+    <h2>Experiment 3: Counter</h2>
+    <div class="fun-box">
+        <p>How high can you click?</p>
+        <div id="count">0</div>
+        <button class="my-button" onclick="addOne()">+ Add One</button>
+        <button class="my-button" onclick="resetCounter()" style="background-color: #0f3460;">Reset</button>
+    </div>
+
+    <!-- ====== EXPERIMENT 4: Type and see it appear ====== -->
+    <h2>Experiment 4: Live Typing</h2>
+    <div class="fun-box">
+        <p>Type something and watch it appear below:</p>
+        <input
+            type="text"
+            placeholder="Type here..."
+            oninput="updateText(this.value)"
+            style="padding: 10px; font-size: 18px; border-radius: 8px; border: 2px solid #e94560; width: 80%; background: #16213e; color: white;"
+        />
+        <p id="liveText" style="font-size: 28px; color: #e94560; margin-top: 15px;">...</p>
+    </div>
+
+    <!-- ====== THINGS TO TRY (instructions for the learner) ====== -->
+    <div class="fun-box" style="margin-top: 50px; border-color: #0f3460;">
+        <h2 style="background-color: #0f3460;">🧪 Things to Try</h2>
+        <p style="text-align: left;">Open this file in VS Code and try these changes:</p>
+        <p style="text-align: left;">
+            1. Change the big title text "My First Website" to your name<br><br>
+            2. Change <strong>background-color: #1a1a2e</strong> in the body CSS to <strong>#2d4059</strong><br><br>
+            3. Change the button color from <strong>#e94560</strong> to <strong>#00ff88</strong><br><br>
+            4. Add a new paragraph: type <strong>&lt;p&gt;Hello!&lt;/p&gt;</strong> anywhere in the body<br><br>
+            5. Add an image: type <strong>&lt;img src="https://picsum.photos/300" /&gt;</strong><br><br>
+            6. Change the emoji 🚀 in the title to any other emoji<br><br>
+            After each change, save the file and refresh your browser to see it!
+        </p>
+    </div>
+
+    <script>
+        /* ============================================ */
+        /* THIS IS THE JAVASCRIPT SECTION - it controls */
+        /* what HAPPENS when you interact with things   */
+        /* ============================================ */
+
+        // This variable keeps track of the count
+        let counter = 0;
+
+        // This function runs when you click "Click Me!"
+        function showMessage() {
+            // "getElementById" finds the element with that id
+            let box = document.getElementById('secretMessage');
+
+            // Change display from "none" (hidden) to "block" (visible)
+            if (box.style.display === 'block') {
+                box.style.display = 'none';   // hide it
+            } else {
+                box.style.display = 'block';  // show it
+            }
+        }
+
+        // This function changes the page background color
+        function changeBackground(color) {
+            document.body.style.backgroundColor = color;
+            // ^^^ document.body targets the <body> tag
+            // .style.backgroundColor changes its CSS
+        }
+
+        // This function adds 1 to the counter
+        function addOne() {
+            counter = counter + 1;   // add 1
+            document.getElementById('count').textContent = counter;
+            // ^^^ finds the element with id="count" and updates the text
+        }
+
+        // This function resets the counter to 0
+        function resetCounter() {
+            counter = 0;
+            document.getElementById('count').textContent = '0';
+        }
+
+        // This function updates the live text as you type
+        function updateText(value) {
+            document.getElementById('liveText').textContent = value;
+            // ^^^ whatever you type goes into the <p> tag
+        }
+    </script>
+
+</body>
+</html>
